@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Press+Start+2P&display=swap');
+
+
+body{
+  margin: 0;
+  padding: 0px;
+  background-color: cadetblue; 
+}
+
+header, .main{
+  width: 100%; /*Takes the full width of the screen (stretch from the left edge to the right edge of my window)*/
+  padding: 14px; /*gives a bit of space inside the header*/
+  display: flex;
+  justify-content: center; /*horizontally centers the input field and add button*/
+}
+
+.inputContainer{
+  display: flex;
+  width: 100%; 
+  max-width: 600px;
+  gap: 10px; /*Puts a gap in between the inout field & button*/
+}
+
+.inputField{
+  font-family: 'Press Start 2P'; /*font family of the input field*/
+  flex: 1;
+  font-size: 1.3rem;
+  padding: 10px;  /*Adds spaces in the input*/
+  border-radius: 10px;  /*rounds the corners of the input field*/
+  border: none;     /*Removes the border of the input field*/
+  box-sizing: border-box;
+}
+
+.addBtn{
+  font-size: 1.3rem; /*font size of our button, matches the input field*/
+  font-family: 'Press Start 2P' ;
+  border-radius: 15px; /*Rounds the edges of our button*/
+  padding: 14px 18px; /*cushion around our button*/
+  background-color: hsla(0, 0%, 100%, 0.906); /*background color for our button*/
+  cursor: pointer; /*allows our button to have a pointer*/
+}
+
+.addBtn:hover{
+  background-color: hsla(0, 0%, 100%, 0.806); /*when we hover over our button, the shade darkens*/
+}
+
+
+.main{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0;
+}
+
+.toDoItem{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px ;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.actionContainer {
+  display: flex;        /* enables flexbox layout */
+  gap: 10px;            /* adds space between the icons */
+}
+
+
+
+
