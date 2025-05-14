@@ -3,6 +3,8 @@ import Tabs from "./components/Tabs"
 import ToDoInput from "./components/ToDoInput"
 import ToDoList from "./components/ToDoList"
 
+import {useState, useEffect} from 'react'
+
 function App() {
 
   //We make a list of things to do using objects
@@ -11,21 +13,79 @@ function App() {
   //Our child component are Header, Tabs, ToDoList, ToDoInput, & ToDoCard.
   //We pass the objects from the parent component using props and destructuring.
 
-  const listOfThingsToDo = [
-    {input: 'Walk the dog', complete: false},
-    {input: 'Go to the gym', complete: true},
-    {input: 'Do my laundry', complete: true},
-    {input: 'Buy groceries', complete: false}
-  ]
+  // const listOfThingsToDo = [
+  //   {input: 'Walk the dog', complete: false},
+  //   {input: 'Go to the gym', complete: true},
+  //   {input: 'Do my laundry', complete: true},
+  //   {input: 'Buy groceries', complete: false}
+  //   ]
+
+  const [listOfThingsToDo, setListOfThingsToDo] = useState([])
+
+  const [selectedTabs, setSelectedTabs] = useState('Open')
+
+  //This function handles adding new items to our to do list
+  function handleAddItem(newToDo) {
+    //we use the spread operator to have the initial list, and then append the new to do item to the end of our list
+    //it's initial status should be false, since we're just adding it to the list
+    const newToDoList = [...listOfThingsToDo, {input: newToDo, complete: false}]
+    setListOfThingsToDo(newToDoList)
+    handleSavedData(newToDoList)
+  }
+
+  function handleEditItem(index) {
+    //Created a duplicate of the listOfThingsToDo array
+    let newToDoList = [...listOfThingsToDo]
+    //Use the index to get the item we want to edit
+    let completedItem = listOfThingsToDo[index]
+    //modify the completed status of the item to true
+    //This will be used to show that the item is completed
+    completedItem['complete'] = true
+    //We save the new completed item at the same index in the newToDoList array
+    //This will replace the old item with the new completed item
+    newToDoList[index] = completedItem
+    //We set the newToDoList as the new listOfThingsToDo
+    setListOfThingsToDo(newToDoList)
+    handleSavedData(newToDoList)
+
+  }
+
+  function handleDeleteItem(index){
+    //We use the filter method to create a new array without the item at the specified index
+    //if the index is not found, it returns the original list
+    //else it returns the new filtered list
+    let newToDoList = listOfThingsToDo.filter((item, itemIndex) => {
+      return itemIndex !== index
+    })
+
+    setListOfThingsToDo(newToDoList)
+    handleSavedData(newToDoList)
+  }
+
+  function handleSavedData(currentList){
+    localStorage.setItem('myToDoList', JSON.stringify({
+      listOfThingsToDo: currentList
+    }))
+  }
+//When the dependency array is empty, the useEffect will only run once when the component mounts.
+//i.e when the page loads
+  useEffect(()=> {
+    if (!localStorage || !localStorage.getItem('myToDoList')) {
+      return
+    }
+    let db = JSON.parse(localStorage.getItem('myToDoList'));
+    setListOfThingsToDo(db.listOfThingsToDo);
+  }, [])
+
   return (
     <>
       {/* In here, we're assigning the list as JSX for props, with it having the same name for the variable for consistency.
       This will make it easy to destructure in the child components below.
       Giving us access to the list. */}
       <Header listOfThingsToDo = {listOfThingsToDo} />
-      <Tabs listOfThingsToDo = {listOfThingsToDo} />
-      <ToDoList listOfThingsToDo = {listOfThingsToDo} />
-      <ToDoInput/>
+      <Tabs selectedTabs={selectedTabs} setSelectedTabs={setSelectedTabs} listOfThingsToDo = {listOfThingsToDo} />
+      <ToDoList handleEditItem={handleEditItem} handleDeleteItem={handleDeleteItem} selectedTabs={selectedTabs} listOfThingsToDo = {listOfThingsToDo} />
+      <ToDoInput handleAddItem = {handleAddItem}/>
     </>
   )
 }

@@ -4,7 +4,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color:hsla(219, 79%, 66%, 0.422)
+    background-color: hsla(0, 0%, 0%, 0.756)
 }
 
 .headerText{
@@ -38,4 +38,72 @@ button:hover{
 span{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: hsla(0, 0%, 50%, 0.582);
+}
+
+.listInput{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    margin: 10px;
+}
+
+.Input-container{
+    border: hsla(240, 100%, 50%, 0.349) solid 2px;
+    margin-top: 30px;
+    margin: 15px;
+    margin-bottom: 0px;
+    background-color: hsla(0, 0%, 0%, 0.756);
+    width: 100%;
+    border-radius: 20px;
+}
+
+.inputBtn{
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+}
+
+.doneBtn{
+    background-color: hsla(155, 100%, 50%, 0.619);
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.doneBtn:hover{
+    background-color: hsla(155, 100%, 50%, 0.419);
+    color: white;
+}
+
+.deleteBtn{
+    background-color: hsla(0, 100%, 50%, 0.726);
+    font-size: 1.3rem;
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover{
+    background-color: hsla(0, 100%, 50%, 0.526);
+    color: white;
+}
+
+.doneBtn:disabled{
+    background-color: hsla(0, 0%, 100%, 0.306);
+    color: hsla(0, 0%, 100%, 0.306);
+    cursor: not-allowed;
+}
+
+.doneBtn:enabled{
+    background-color: hsla(155, 100%, 50%, 0.619);
+    color: white;
+    cursor: pointer;
+}
+
+.tab-selected{
+    border-bottom: 4px solid white;
+    font-weight: bold;
 }
