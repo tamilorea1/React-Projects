@@ -20,14 +20,14 @@ export default function ToDoInput(props) {
   // The input field has an onChange event handler that updates the newToDo state with the value entered by the user
   // The input field has a placeholder text to guide the user on what to enter
   // The button has an onClick event handler that calls the handleAddListOfThings function with the newToDo state as an argument
-  
+
   return (
     <header>
         <div className='inputContainer'>
             <input value={newToDo} onChange={(e) => {
               setNewToDo(e.target.value)
             }} className='inputField' type="text" placeholder='Enter things to do' />
-            <button className='addBtn' onClick={()=> {
+            <button className='addBtn' onClick={() => {
               handleAddListOfThings(newToDo)
               setNewToDo('')
             }}>Add</button>

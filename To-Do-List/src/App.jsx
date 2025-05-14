@@ -29,6 +29,9 @@ function handleAddListOfThings(newListItem){
 // Function to handle deleting an item from the list
 // This function takes an index as an argument, filters the existing list to remove the item at that index, and updates the state
 // It also calls the persistData function to store the updated list in local storage
+//if the index is not found, it returns the original list
+// The function uses the filter method to create a new array without the item at the specified index
+// The function also updates the state with the new list
 
 function handleDelete(index){
   const newItem = listOfThings.filter((element, elementIndex) => {

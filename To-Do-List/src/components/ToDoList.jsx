@@ -18,6 +18,14 @@ export default function ToDoList(props) {
         {listOfThings.map((element, elementIndex) =>
         {
             return(
+                //Element is the current item in the listOfThings array
+                //ElementIndex is the index of the current item in the listOfThings array
+                //Example: if the current item is "Buy groceries" and its index is 0, then element = "Buy groceries" and elementIndex = 0
+
+                //The ToDoCard component is used to display each item in the list
+                //The ToDoCard component is passed the necessary props, including the index of the item in the list
+                //We use the spread operator to pass all the props from the parent component to the ToDoCard component
+                //The key prop is used to help React identify which items have changed, are added, or are removed
                 <ToDoCard {...props} key={elementIndex} index ={elementIndex}>
                     <p>{element}</p>
                 </ToDoCard>

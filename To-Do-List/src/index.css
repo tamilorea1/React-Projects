@@ -15,15 +15,15 @@ header, .main{
 }
 
 .inputContainer{
-  display: flex;
-  width: 100%; 
-  max-width: 600px;
+  display: flex; 
+  width: 100%;  /*Takes the full width of the screen (stretch from the left edge to the right edge of my window)*/
+  max-width: 600px; /*max width of the input field*/
   gap: 10px; /*Puts a gap in between the inout field & button*/
 }
 
 .inputField{
   font-family: 'Press Start 2P'; /*font family of the input field*/
-  flex: 1;
+  flex: 1; /*allows the input field to take up all the space available*/
   font-size: 1.3rem;
   padding: 10px;  /*Adds spaces in the input*/
   border-radius: 10px;  /*rounds the corners of the input field*/
@@ -54,11 +54,12 @@ header, .main{
 }
 
 .toDoItem{
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+  display: flex;  /* enables flexbox layout */
+  align-items: center; 
+  gap: 10px; 
   padding: 10px ;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
 }
 
