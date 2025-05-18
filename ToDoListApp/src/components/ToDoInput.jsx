@@ -1,5 +1,3 @@
-
-
 import {React, useState} from 'react'
 
 // This component lets the user type in a new task and add it to the to-do list
@@ -21,7 +19,9 @@ export default function ToDoInput(props) {
       {/* The e in the onChange stands for event, which is the thing that happens when a user types */} 
       {/* e.target represents the input box */}
       {/* e.target.value is what the user typed in */} 
-        <input className='inputField' type="text" value={inputValue} onChange={(e) => {setInputValue(e.target.value)}} placeholder='Enter things to do'  />
+        <input className='inputField' type="text" value={inputValue} 
+        onChange={(e) => {setInputValue(e.target.value)}} 
+        placeholder='Enter things to do'  />
         
         {/* When the add button is clicked: 
             - If the input is empty, do nothing
@@ -34,6 +34,7 @@ export default function ToDoInput(props) {
             }
             handleAddItem(inputValue)
             setInputValue('')}} >
+              
         <i className="fa-solid fa-plus"></i>
         </button>
       

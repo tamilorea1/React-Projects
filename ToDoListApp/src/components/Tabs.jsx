@@ -13,6 +13,7 @@ export default function Tabs(props) {
 
     //Here, we're trying to dynamically figure out the number of open tasks
     //We take the length of the filtered out the items in the list that are not complete
+    //We use the filter method to check if the item's status is not complete
     const numOfOpenTasks = listOfThingsToDo.filter((item) => !item.complete).length
 
 
