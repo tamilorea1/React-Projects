@@ -1,0 +1,50 @@
+#root{
+    margin: 0px; /*removes the default margin of the body*/ 
+    padding: 0px; /*removes the default padding of the body*/
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.navHeader{
+    display: flex;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    border-bottom: 2px solid hsl(0, 7%, 26%);
+    padding: 10px;
+}
+
+.navInput{
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: 0.8rem;
+    width: 175px;
+    margin: 0;
+    padding: 10px; /* Add some padding for better text visibility */
+    box-sizing: border-box; /* Ensures padding doesn't add to width */
+    border-radius: 4px; /* Optional: adds rounded corners to match your theme */
+    margin-bottom: 10px;
+}
+
+.pokemonName{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid hsl(0, 7%, 26%);
+}
+
+.pokemonName:hover{
+    background-color: hsl(0, 7%, 26%);
+    color: rgb(255, 255, 255);
+}
+
+.pokemonNameBtn{
+    border-radius: 10px;
+    border: 1px solid hsl(0, 7%, 26%);
+    background-color: hsl(0, 14%, 85%);
+}
