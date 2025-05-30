@@ -1,50 +1,50 @@
+import Header from "./components/Header"
+import ResultsTable from "./components/ResultsTable"
+import UserInput from "./components/UserInput"
+import { useState } from "react"
 
-import Header from './components/Header/Header.jsx'
-
-import CoreConcept from './components/CoreConcept.jsx';
-import Examples from './components/Examples.jsx';
+//Initial values of my labels
+const USER_LABELS = {
+  initialInvestment: 10000,
+  annualInvestment: 100,
+  expectedReturn: 3,
+  duration: 10
+}
 
 function App() {
 
+  //states for updating the UI of my website
+  //Set the intial value to my object 'USER-LABEL
+  //so we can access its key-value pairs easily
+  const [userInput, setUserInput] = useState(USER_LABELS)
+
+  //Check if the duration input by the user is greater than or equal to 1
+  const isDurationValid = userInput.duration >= 1;
+  
+  //This function ensure that when we type a value in our input field, its not going to apply to all input fields
+      function handleInvestmentChange(inputName, inputValue) {
+        //We want to keep our original values using the spread '...' operator
+        //This line '[inputName]: inputValue', states we should only change the field with the label 'inputName' to inputValue
+        //if we did inputName: inputValue, it means that it would search for a key called 'inputName' and set it to inputValue
+        //So we are using the inputName variable to access the key of our object
+        setUserInput ((prevValue) => {
+            return{
+              ...prevValue,
+              [inputName]: Number(inputValue),
+            }
+          })
+      }
   
 
   return (
-    <div>
-      <Header />
-      <main>
-            {/*Since we are calling the CORE_CONCEPTS object */}
-            {/*We are able to access its key value pairs */}
-            {/*As well as accessing the index of each key value pair for accuracy */}
-            {/*Ex: CORE_CONCEPTS[0].title will go to the object at index 0 and retrieve its title */}
-              {/* <CoreConcepts 
-              title = {CORE_CONCEPTS[0].title}
-              description = {CORE_CONCEPTS[0].description}
-              image= {CORE_CONCEPTS[0].image}
-              />
-
-              <CoreConcepts
-              title = {CORE_CONCEPTS[1].title}
-              description = {CORE_CONCEPTS[1].description}
-              image= {CORE_CONCEPTS[1].image}/>
-
-              <CoreConcepts
-              title = {CORE_CONCEPTS[2].title}
-              description = {CORE_CONCEPTS[2].description}
-              image= {CORE_CONCEPTS[2].image}/>
-
-              <CoreConcepts
-              title = {CORE_CONCEPTS[3].title}
-              description = {CORE_CONCEPTS[3].description}
-              image= {CORE_CONCEPTS[3].image}/> */}
-
-             <CoreConcept/>
-             <Examples /> 
-
-        
-        
-      </main>
-    </div>
-  );
+    <>
+    
+      <Header/>
+      <UserInput handleInvestmentChange={handleInvestmentChange} userInput={userInput}/>
+      {isDurationValid ? <ResultsTable userInput={userInput}/> : 
+      <p className="center">Please enter a duration greater than 0</p>}
+    </>
+  )
 }
 
-export default App;
+export default App
