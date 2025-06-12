@@ -10,7 +10,7 @@ export default function UserInput({handleInvestmentChange, userInput}) {
         <div className='input-group'>
             <p>
                 {/*The onChange attribute looks for the object key named 'Initial' and gets the value that was input into it */}
-                {/*The value attribute stores the value of the input field dedicated to the key called 'Initial' */}
+                {/*The value attribute stores the value of the input field dedicated to the key called 'initialInvestment' */}
                 <label>Initial investment</label>
                 <input type="number" 
                 placeholder='Enter a number' 
