@@ -8,6 +8,8 @@ export default function FeedBackTracker() {
 
     const [recentFeedback, setRecentFeedback] = useState('')
 
+    const [goodCount, setGoodCount] = useState(0)
+
     function handleCount() {
         setCount(count + 1)
     }
@@ -16,19 +18,24 @@ export default function FeedBackTracker() {
         setRecentFeedback(newFeedback)
     }
 
-
+    const goodPercent = count > 0 ? Math.round((goodCount/count)*100) : 0;
     
 
   return (
     <div>
         
-        <button onClick={() => {
+        <button onClick={() =>
+
+        {
                 handleCount(),
-                handleFeedback('Good')
+                handleFeedback('Good');
+                setGoodCount(goodCount + 1);
         }
     }>
             Good👍🏾
         </button>
+
+
         <button onClick={() => {
                 handleCount(),
                 handleFeedback('Neutral')
@@ -50,6 +57,10 @@ export default function FeedBackTracker() {
 
         <p>
             You selected: {recentFeedback}
+        </p>
+
+        <p>
+            Good Percentage: {goodPercent} %
         </p>
     </div>
   )
