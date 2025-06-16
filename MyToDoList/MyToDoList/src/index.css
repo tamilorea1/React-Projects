@@ -1,0 +1,48 @@
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  background-color: hsl(0, 2%, 75%);
+}
+
+.header-container{
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.header{
+  color: hsl(0, 0%, 11%);
+  border: 2px solid black;
+}
+
+.userInput{
+  font-size: 40px;
+}
+
+.addBtn{
+  width: 40px;
+  height: 55px;
+}
+
+.allBtn{
+  font-size: 30px;
+}
+
+.activeBtn{
+    font-size: 30px;
+
+}
+
+.completedBtn{
+    font-size: 30px;
+
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
