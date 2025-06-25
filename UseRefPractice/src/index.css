@@ -1,0 +1,20 @@
+
+/* index.css or App.css */
+
+.app {
+  height: 100vh;      /* full screen height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.black {
+  background-color: #111;
+  color: white;
+}
+
+.white {
+  background-color: #f5f5f5;
+  color: black;
+}
+
