@@ -15,7 +15,7 @@ import Summary from './Summary.jsx'
 
 export default function Quiz() {
 
-    const shuffledAnswers = useRef();
+    // const shuffledAnswers = useRef();
     
     //This state handles the selected answer by the user.
     //The range of answers will be stored in an array
