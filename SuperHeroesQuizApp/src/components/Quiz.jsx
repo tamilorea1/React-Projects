@@ -56,7 +56,7 @@ export default function Quiz({userName}) {
                 answer: null,
                 type: null
             })
-        }, 1500)
+        }, 2000)
     }
 
     //this function handles the logic for when the skip button is pressed
@@ -78,15 +78,15 @@ export default function Quiz({userName}) {
     //this is the logic for if there are no more questions to be answered
     const quizComplete = activeQuestionIndex === QUESTIONS.length
 
-    //Ensures that the shuffling is handled once
+    //Ensures that the shuffling is handled once - FIXED: Only shuffle when question changes
     useEffect(() => {
-        // Only shuffle answers when we move to a new question and not highlighting
-        if (activeQuestionIndex < QUESTIONS.length && highlight.answer === null) {
+        // Only shuffle answers when we move to a new question (not when highlighting changes)
+        if (activeQuestionIndex < QUESTIONS.length) {
             let shuffledAnswers = [...QUESTIONS[activeQuestionIndex].answers]
             shuffledAnswers = shuffledAnswers.sort(() => Math.random() - 0.5)
             setShuffledAnswers(shuffledAnswers)
         }
-    }, [activeQuestionIndex, highlight.answer])
+    }, [activeQuestionIndex])
 
     if (quizComplete) {
         //display results screen
