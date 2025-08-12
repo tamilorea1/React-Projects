@@ -1,6 +1,27 @@
 {
   "opinions": [
     {
+      "id": 1754589024612,
+      "votes": 2,
+      "userName": "lone",
+      "title": "New Update",
+      "body": "Button is disabled"
+    },
+    {
+      "id": 1754588585851,
+      "votes": 0,
+      "userName": "Tami",
+      "title": "Learning ",
+      "body": "I think react is cool"
+    },
+    {
+      "id": 1754588584808,
+      "votes": 0,
+      "userName": "Tami",
+      "title": "Learning ",
+      "body": "I think react is cool"
+    },
+    {
       "id": 1,
       "userName": "Maximilian Schwarzmüller",
       "title": "Do yourself a favor and learn React!",
