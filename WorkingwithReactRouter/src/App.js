@@ -1,6 +1,8 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomePage from './components/Home';
 import ProductsPage from './components/Products';
+import RootLayout from './components/Root';
+import ErrorPage from './components/Error';
 
 // exmaple of a url without path:
 // https://example.com/
@@ -15,12 +17,18 @@ import ProductsPage from './components/Products';
 
 //We added /prodcuts as a path
 //so when i go to my url on my webpage
-//i added /products at the end
+//add /products at the end
 //and this should redirect me to the Products component
 const router = createBrowserRouter([
-    {path: '/', element: <HomePage/>},
-    {path: '/products', element: <ProductsPage/>}
-]
+    {path: '/', 
+      element: <RootLayout/>,
+      errorElement: <ErrorPage/>,
+      children:[
+        {path: '/', element: <HomePage/>},
+        {path: '/products', element: <ProductsPage/>}
+      ]
+    },
+  ]
 )
 
 
