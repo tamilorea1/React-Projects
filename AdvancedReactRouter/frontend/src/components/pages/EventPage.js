@@ -1,37 +1,38 @@
 import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 import EventsList from '../EventsList';
 
 function EventsPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [fetchedEvents, setFetchedEvents] = useState();
-  const [error, setError] = useState();
+    const data = useLoaderData()
+    const events = data.events
 
-  useEffect(() => {
-    async function fetchEvents() {
-      setIsLoading(true);
-      const response = await fetch('http://localhost:8080/events');
-
-      if (!response.ok) {
-        setError('Fetching events failed.');
-      } else {
-        const resData = await response.json();
-        setFetchedEvents(resData.events);
-      }
-      setIsLoading(false);
-    }
-
-    fetchEvents();
-  }, []);
+    // if (data.isError) {
+    //   return <p>{data.message}</p>
+    // }
+ 
   return (
     <>
-      <div style={{ textAlign: 'center' }}>
-        {isLoading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-      </div>
-      {!isLoading && fetchedEvents && <EventsList events={fetchedEvents} />}
+      
+       <EventsList events={events} />
     </>
   );
 }
 
 export default EventsPage;
+
+
+export async function loader(){
+     const response = await fetch('http://localhost:8080/events');
+
+              if (!response.ok) {
+              throw new Response(
+                JSON.stringify({message: 'Could not fetch events'}),
+                { status: 500 }
+              )
+                // return {isError: true, message: 'Could not fetch events'}
+              } 
+              else {
+                return response
+            }
+}

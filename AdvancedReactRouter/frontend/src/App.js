@@ -21,23 +21,43 @@
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomePage from './components/pages/HomePage';
-import EventPages from './components/pages/EventPage';
-import EventDetailPage from './components/pages/EventDetailPage';
+import EventPages, {loader as eventsLoader} from './components/pages/EventPage';
+import EventDetailPage, {loader as detailsLoader} from './components/pages/EventDetailPage';
 import NewEventPage from './components/pages/NewEventPage';
 import EditEventPage from './components/pages/EditEventPage';
 import RootLayout from './components/pages/Root';
 import EventRootLayout from './components/pages/EventsRoot';
+import ErrorPage from './components/pages/Error';
+
+
+
+//adding loader property
+//fetches data before a component renders
+
+//instead of fetching inside my EventsPages component,
+//the loader fetches the data first, then renders the component
+
+
+//can't get the loaded data if its on a higher level than the fetch
+//so our rootlayout component cant access the loaded data since its higher
 
 const router = createBrowserRouter([
   {path: '/',
     element:<RootLayout/>,
+    errorElement: <ErrorPage/> ,
     children:[
       {index: true, element: <HomePage/>},
       {path: '/events',
         element: <EventRootLayout/>,
         children: [
-          {index: true, element:<EventPages/>},
-          {path: '/events/:eventId', element: <EventDetailPage/>},
+          {index: true, 
+            element:<EventPages/>,
+            loader: eventsLoader
+          },
+          {path: '/events/:eventId',
+             element: <EventDetailPage/>,
+            loader: detailsLoader
+            },
           {path: '/events/new', element: <NewEventPage/>},
           {path: '/events/:eventId/edit', element: <EditEventPage/>}
         ]
