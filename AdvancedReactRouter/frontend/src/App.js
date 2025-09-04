@@ -22,13 +22,13 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomePage from './components/pages/HomePage';
 import EventPages, {loader as eventsLoader} from './components/pages/EventPage';
-import EventDetailPage, {loader as detailsLoader} from './components/pages/EventDetailPage';
+import EventDetailPage, {loader as detailsLoader, action as deleteEvent} from './components/pages/EventDetailPage';
 import NewEventPage from './components/pages/NewEventPage';
 import EditEventPage from './components/pages/EditEventPage';
 import RootLayout from './components/pages/Root';
 import EventRootLayout from './components/pages/EventsRoot';
 import ErrorPage from './components/pages/Error';
-
+import {action as manipulateEventAction} from './components/EventForm'
 
 
 //adding loader property
@@ -54,12 +54,27 @@ const router = createBrowserRouter([
             element:<EventPages/>,
             loader: eventsLoader
           },
-          {path: '/events/:eventId',
+          {
+            path: '/events/:eventId',
+            id: 'event-detail',
+            loader: detailsLoader ,
+            children: [
+              {index: true,
              element: <EventDetailPage/>,
-            loader: detailsLoader
+             action: deleteEvent
             },
-          {path: '/events/new', element: <NewEventPage/>},
-          {path: '/events/:eventId/edit', element: <EditEventPage/>}
+
+            {path: '/events/:eventId/edit', 
+              element: <EditEventPage/>,
+              action: manipulateEventAction
+              
+            }
+
+            ]
+          },
+          
+          {path: '/events/new', element: <NewEventPage/>, action: manipulateEventAction},
+          
         ]
       }
       
