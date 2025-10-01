@@ -23,11 +23,13 @@ export default function NewEventsSection() {
     //cache meaning, storing data so that it could be reused later
     //values are stored in arrays
     //can also be different value types like strings, properties, or nested arrays
-    queryKey: ['events'],
+    queryKey: ['events', {max: 3}],
 
     //this stores a promise
     //this is our function
-    queryFn: fetchEvents
+    //sets the maximum events to be shown on the web page
+    //as 3.
+    queryFn: ({signal, queryKey}) => fetchEvents({signal, ...queryKey[1]})
 
    
   });
